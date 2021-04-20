@@ -1,14 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
+use LasePeco\Localization\Http\Controllers\SetLocaleController;
 
-Route::get('locale/{locale}', function ($locale) {
-    Session::put('locale', $locale);
-
-    if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
-        return redirect('/');
-    }
-
-    return redirect()->back();
-})->name('locale');
+Route::get('locale/{locale}', SetLocaleController::class)->name('locale')->middleware(['web']);
