@@ -1,9 +1,10 @@
 # A simple localization library
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lase-peco/localization.svg?style=flat-square)](https://packagist.org/packages/lase-peco/localization)
-[![Build Status](https://img.shields.io/travis/lase-peco/localization/master.svg?style=flat-square)](https://travis-ci.org/lase-peco/localization)
-[![Quality Score](https://img.shields.io/scrutinizer/g/lase-peco/localization.svg?style=flat-square)](https://scrutinizer-ci.com/g/lase-peco/localization)
 [![Total Downloads](https://img.shields.io/packagist/dt/lase-peco/localization.svg?style=flat-square)](https://packagist.org/packages/lase-peco/localization)
+
+[comment]: <> ([![Build Status]&#40;https://img.shields.io/travis/lase-peco/localization/master.svg?style=flat-square&#41;]&#40;https://travis-ci.org/lase-peco/localization&#41;)
+[comment]: <> ([![Quality Score]&#40;https://img.shields.io/scrutinizer/g/lase-peco/localization.svg?style=flat-square&#41;]&#40;https://scrutinizer-ci.com/g/lase-peco/localization&#41;)
 
 A simple localization library.
 
@@ -17,8 +18,22 @@ composer require lase-peco/localization
 
 ## Usage
 
+Using the `Localization` facade you can call the following functions
+
 ``` php
-// Usage description here
+Localization::getSupportedLocales();
+
+Localization::getCurrentLocale();
+
+Localization::getCurrentLocaleName();
+
+Localization::getCurrentLocaleNativeName();
+
+Localization::getCurrentLocaleRegional();
+
+Localization::getSupportedLanguagesKeys();
+
+Localization::setLocale('de');
 ```
 
 ### Testing
