@@ -8,6 +8,12 @@
 
 A simple localization library.
 
+## Notes
+
+This document is a work in progress!
+
+This whole package is hugly inspired by [mcamara/laravel-localization](https://github.com/mcamara/laravel-localization), we wanted something simpler, with support for PHP IntlDateFormatter so we made our own package.
+
 ## Installation
 
 You can install the package via composer:
