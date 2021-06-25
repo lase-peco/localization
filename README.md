@@ -12,7 +12,7 @@ A simple localization library.
 
 This document is a work in progress!
 
-This whole package is hugly inspired by [mcamara/laravel-localization](https://github.com/mcamara/laravel-localization), we wanted something simpler, with support for PHP IntlDateFormatter so we made our own package.
+This whole package is hugely inspired by [mcamara/laravel-localization](https://github.com/mcamara/laravel-localization), we wanted something simpler, with support for PHP IntlDateFormatter, so we made our package.
 
 ## Installation
 
@@ -22,9 +22,19 @@ You can install the package via composer:
 composer require lase-peco/localization
 ```
 
+Then in your Web kernel file `app/Http/Kernel.php` in the `web` array in `$middlewareGroups`, add this line to the end of the array:
+
+```php
+'web' => [
+     // Other middlewares
+     //
+     \LasePeco\Localization\Http\Middleware\Localization::class,
+],
+```
+
 ## Usage
 
-Using the `Localization` facade you can call the following functions
+Using the `Localization` facade, you can call the following functions:
 
 ``` php
 Localization::getSupportedLocales();
