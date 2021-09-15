@@ -32,24 +32,147 @@ Then in your Web kernel file `app/Http/Kernel.php` in the `web` array in `$middl
 ],
 ```
 
-## Usage
-
-Using the `Localization` facade, you can call the following functions:
+Then publish the config file `localization.php` with the following command to define your application languages:
 
 ``` php
-Localization::getSupportedLocales();
+php artisan  vendor:publish --provider="LasePeco\Localization\LocalizationServiceProvider"
+```
 
-Localization::getCurrentLocale();
+## Usage
 
-Localization::getCurrentLocaleName();
+### Get current language
 
-Localization::getCurrentLocaleNativeName();
+Return a string with the current language `"en"`.
 
-Localization::getCurrentLocaleRegional();
+``` php
+Localization::getCurrentLocale() 
+``` 
 
-Localization::getSupportedLanguagesKeys();
+### Get current language name
 
-Localization::setLocale('de');
+Return a string with the name of the current language `"English"`.
+
+``` php
+Localization::getCurrentLocaleName() 
+``` 
+### Get current language native name
+
+Return a string with the native name of the current language `"Deutsch"`.
+
+``` php
+Localization::getCurrentLocaleNativeName() 
+```
+### Get current regional language 
+
+Return a string with the current regional language `"en_GB"`.
+
+``` php
+Localization::getCurrentLocaleRegional()
+``` 
+
+### Get keys of supported languages
+
+Return an array of supported languages in your application:
+
+
+``` php
+Localization::getSupportedLanguagesKeys() 
+```
+
+``` php
+//return
+[
+  0 => "ar"
+  1 => "en"
+  2 => "de"
+]
+```
+### Get supported languages
+
+Return an associative array with the supported languages for your application:
+
+
+
+``` php
+Localization::getSupportedLocales()
+```
+``` php
+//return
+[
+  "en" => [
+    "direction" => "ltr"
+    "regional" => "en_GB"
+    "name" => "English"
+    "native" => "English"
+  ]
+  "de" => [
+    "direction" => "ltr"
+    "regional" => "de_DE"
+    "name" => "German"
+    "native" => "Deutsch"
+  ]
+]
+```
+
+### Set application language
+
+To set the language of your application use the provided route `'locale'` with the selected language as a parameter:
+
+``` php
+route('locale', [$key]) // $key = "en" or "de" or ...
+```
+The route sets the application language to the selected language.
+
+### Time format
+
+`Localization::formatDate($date)` return a string of the date formatted in native Language:
+
+Example
+
+``` php
+$model->created_at->intlDateFormat();
+// or
+Localization::formatDate($model->created_at);
+```
+``` php
+//return
+'Sep 14, 2021'   // 'en' 
+'14.09.2021'     // 'de'
+'14 sept. 2021'  // 'fn'
+'١٤‏/٠٩‏/٢٠٢١'    // 'ar'
+```
+### Date format
+`Localization::formatTime($time)` return a string of the time formatted in native Language:
+
+Example
+
+``` php
+$model->created_at->intlTimeFormat();
+// or
+Localization::formatTime($model->created_at);
+```
+``` php
+//return
+'1:27 PM'  // 'en' 
+'13:27'    // 'de'
+'١:٢٧ م'   // 'ar'
+```
+### Date-Time format
+`Localization::formatDateTime($date_time)` return a string of the date and time formatted in native Language:
+
+Example
+
+``` php
+$model->created_at->intlDateTimeFormat();
+// or
+Localization::formatDateTime($model->created_at);
+```
+``` php
+// return
+'Sep 14, 2021, 1:27 PM'  // 'en' 
+'14.09.2021, 13:27'      // 'de'
+'14 sept. 2021, 13:27'   // 'fr'
+'١٤‏/٠٩‏/٢٠٢١, ١:٢٧ م'    // 'ar'
 ```
 
 ### Testing
