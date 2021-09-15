@@ -127,9 +127,11 @@ The route sets the application language to the selected language.
 
 `Localization::formatDate($date)` return a string of the date formatted in native Language:
 
-<span style="color:gray">Example</span>
+Example
 
 ``` php
+$model->created_at->intlDateFormat();
+// or
 Localization::formatDate($model->created_at);
 ```
 ``` php
@@ -142,9 +144,11 @@ Localization::formatDate($model->created_at);
 ### Date format
 `Localization::formatTime($time)` return a string of the time formatted in native Language:
 
-<span style="color:gray">Example</span>
+Example
 
 ``` php
+$model->created_at->intlTimeFormat();
+// or
 Localization::formatTime($model->created_at);
 ```
 ``` php
@@ -156,13 +160,15 @@ Localization::formatTime($model->created_at);
 ### Date-Time format
 `Localization::formatDateTime($date_time)` return a string of the date and time formatted in native Language:
 
-<span style="color:gray">Example</span>
+Example
 
 ``` php
+$model->created_at->intlDateTimeFormat();
+// or
 Localization::formatDateTime($model->created_at);
 ```
 ``` php
-//return
+// return
 'Sep 14, 2021, 1:27 PM'  // 'en' 
 '14.09.2021, 13:27'      // 'de'
 '14 sept. 2021, 13:27'   // 'fr'
