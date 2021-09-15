@@ -119,7 +119,8 @@ To set the language of your application use the provided route `'locale'` with t
 ``` php
 route('locale', [$key]) // $key = "en" or "de" or ...
 ```
-The route sets the application language to the selected language.
+
+Or make a get request to `/local/{$local}`, this will set the application language to the selected language.
 
 ### Time format
 
