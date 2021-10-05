@@ -4,6 +4,16 @@ namespace LasePeco\Localization\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+
+ * @method static string getCurrentLocale()
+ * @method static string getCurrentLocaleNativeName()
+ * @method static string getCurrentLocaleRegional()
+ * @method static string getCurrentLocaleFlag()
+ * @method static array getSupportedLocales()
+ * @method static array getSupportedLanguagesKeys()
+ * @method static array getSupportedLocalesFlags()
+ */
 class Localization extends Facade
 {
     /**
