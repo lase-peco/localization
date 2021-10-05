@@ -61,4 +61,9 @@ class Localization
     {
         return array_keys($this->getSupportedLocales());
     }
+
+    public function getCurrentLocaleFlag()
+    {
+        return file_get_contents(__DIR__ . "/../resources/flags/{$this->getCurrentLocale()}.svg");
+    }
 }
