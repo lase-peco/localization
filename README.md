@@ -174,6 +174,27 @@ Localization::formatDateTime($model->created_at);
 '١٤‏/٠٩‏/٢٠٢١, ١:٢٧ م'    // 'ar'
 ```
 
+### Flags
+
+`Localization::getCurrentLocaleFlag()` return html string that represents the svg flag.
+`Localization::getSupportedLocalesFlags()` return an array, each item contains a html string that represents the svg flag.
+
+The flags are set to take the full height and width of their parent tag.
+
+Example using tailwindcss!
+
+``` html
+<div class="inline-block h-4 w-auto mr-2">{!! Localization::getCurrentLocaleFlag() !!}</div>{{Localization::getCurrentLocaleNativeName()}}
+```
+``` html
+@foreach(Localization::getSupportedLocales() as $key => $locale)
+    <a href="{{ route('locale', [$key]) }}"
+       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+       role="menuitem"><span class="flex items-center"><span class="inline-block h-4 w-auto mr-2">{!! Localization::getSupportedLocalesFlags()[$key] !!}</span>{{$locale['native']}}</span></a>
+@endforeach
+```
+
+
 ### Testing
 
 ``` bash
