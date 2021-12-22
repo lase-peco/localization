@@ -212,6 +212,7 @@ If you discover any security related issues, please email a.dabak@lase-peco.com 
 ## Credits
 
 - [Ahmed Dabak](https://github.com/lase-peco)
+- [Abdulsalam Emesh](https://github.com/lase-peco)
 - [All Contributors](CONTRIBUTING.md)
 
 ## License
