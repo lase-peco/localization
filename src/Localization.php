@@ -2,15 +2,25 @@
 
 namespace LasePeco\Localization;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use IntlDateFormatter;
 
 class Localization
 {
+    private $timezone;
+
+    public function __construct($timezone)
+    {
+        $this->timezone = $timezone;
+    }
+
     public function formatDate($date_time)
     {
-        return (new IntlDateFormatter($this->getCurrentLocale(), IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE))->format($date_time);
+        $formatter = new IntlDateFormatter($this->getCurrentLocale(), IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE);
+
+        $formatter->setTimeZone($this->timezone);
+
+        return $formatter->format($date_time);
     }
 
     /**
@@ -23,12 +33,20 @@ class Localization
 
     public function formatTime($date_time)
     {
-        return (new IntlDateFormatter($this->getCurrentLocale(), IntlDateFormatter::NONE, IntlDateFormatter::SHORT))->format($date_time);
+        $formatter = new IntlDateFormatter($this->getCurrentLocale(), IntlDateFormatter::NONE, IntlDateFormatter::SHORT);
+
+        $formatter->setTimeZone($this->timezone);
+
+        return $formatter->format($date_time);
     }
 
     public function formatDateTime($date_time)
     {
-        return (new IntlDateFormatter($this->getCurrentLocale(), IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT))->format($date_time);
+        $formatter = new IntlDateFormatter($this->getCurrentLocale(), IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT);
+
+        $formatter->setTimeZone($this->timezone);
+
+        return $formatter->format($date_time);
     }
 
     public function getCurrentLocaleName()
@@ -60,6 +78,11 @@ class Localization
             setlocale(LC_TIME, $regional);
             setlocale(LC_MONETARY, $regional);
         }
+    }
+
+    public function setTimezone(string $timezone)
+    {
+        $this->timezone = $timezone;
     }
 
     /**

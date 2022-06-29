@@ -47,7 +47,9 @@ class LocalizationServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('localization', function () {
-            return new Localization;
+            return new Localization(
+                config('app.timezone')
+            );
         });
     }
 }

@@ -79,6 +79,16 @@ class LocalizationTest extends TestCase
         $this->assertEquals('20.04.2021, 14:10', app('localization')->formatDateTime(Carbon::create(2021, 04, 20, 14, 10)));
     }
 
+    public function testFormatDateTimeWithTimezone()
+    {
+        $localization = app('localization');
+
+        $localization->setLocale('de');
+        $localization->setTimezone('Europe/Berlin');
+
+        $this->assertEquals('20.04.2021, 16:10', app('localization')->formatDateTime(Carbon::create(2021, 04, 20, 14, 10)));
+    }
+
 
     public function testGetCurrentLocaleName()
     {
