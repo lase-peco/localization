@@ -1,0 +1,13 @@
+services:
+    laravel-package-dev:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                PHP_VERSION: "8.2"
+                UID: "${UID:-1000}"
+                GID: "${GID:-1000}"
+        volumes:
+            - .:/app
+        working_dir: /app
+        tty: true
